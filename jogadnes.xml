@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Jóga Dnes — vlastní feed</title>
+    <link>https://www.jogadnes.cz</link>
+    <description>Vlastní RSS se stálými odkazy na články z jogadnes.cz</description>
+    <language>cs</language>
+    <lastBuildDate>Wed, 22 Oct 2025 07:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>Jóga a dech: základní techniky</title>
+      <link>https://www.jogadnes.cz/clanek/joga-a-dech-zakladni-techniky</link>
+      <description>Krátký přehled dechových technik vhodných pro začátečníky.</description>
+      <pubDate>Tue, 21 Oct 2025 10:00:00 +0000</pubDate>
+      <guid>https://www.jogadnes.cz/clanek/joga-a-dech-zakladni-techniky</guid>
+    </item>
+
+    <item>
+      <title>Ranní sekvence pro pevný střed</title>
+      <link>https://www.jogadnes.cz/clanek/ranni-sekvence-pro-pevny-stred</link>
+      <description>Jednoduchá ranní praxe na posílení středu těla a lepší držení.</description>
+      <pubDate>Mon, 20 Oct 2025 08:30:00 +0000</pubDate>
+      <guid>https://www.jogadnes.cz/clanek/ranni-sekvence-pro-pevny-stred</guid>
+    </item>
+
+    <item>
+      <title>Jak vybrat místo pro jógovou praxi</title>
+      <link>https://www.jogadnes.cz/clanek/jak-vybrat-misto-pro-jogovou-praxi</link>
+      <description>Tipy jak si připravit domácí prostor pro pravidelnou praxi.</description>
+      <pubDate>Sun, 19 Oct 2025 12:00:00 +0000</pubDate>
+      <guid>https://www.jogadnes.cz/clanek/jak-vybrat-misto-pro-jogovou-praxi</guid>
+    </item>
+
+  </channel>
+</rss>
