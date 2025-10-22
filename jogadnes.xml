@@ -5,9 +5,8 @@
     <link>https://www.jogadnes.cz/</link>
     <description>Statický RSS vytvořený pro Inoreader — canonical odkazy na články</description>
     <language>cs</language>
-    <lastBuildDate>Wed, 22 Oct 2025 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Oct 2025 11:00:00 +0000</lastBuildDate>
 
-    <!-- Item 1: nahraď URL, title, description, pubDate reálnými hodnotami -->
     <item>
       <title>Jóga a dech: základní techniky</title>
       <link>https://www.jogadnes.cz/joga/joga-a-dech-5558/</link>
@@ -16,7 +15,6 @@
       <guid isPermaLink="true">https://www.jogadnes.cz/joga/joga-a-dech-5558/</guid>
     </item>
 
-    <!-- Item 2 -->
     <item>
       <title>Ranní sekvence pro pevný střed</title>
       <link>https://www.jogadnes.cz/joga/ranni-sekvence-pro-pevny-stred-5542/</link>
@@ -25,7 +23,6 @@
       <guid isPermaLink="true">https://www.jogadnes.cz/joga/ranni-sekvence-pro-pevny-stred-5542/</guid>
     </item>
 
-    <!-- Item 3 -->
     <item>
       <title>Jak vybrat místo pro jógovou praxi</title>
       <link>https://www.jogadnes.cz/joga/jak-vybrat-misto-pro-jogovou-praxi-5531/</link>
@@ -34,6 +31,61 @@
       <guid isPermaLink="true">https://www.jogadnes.cz/joga/jak-vybrat-misto-pro-jogovou-praxi-5531/</guid>
     </item>
 
-    <!-- Přidej další položky stejným způsobem -->
+    <item>
+      <title>Večerní relaxační praxe pro lepší spánek</title>
+      <link>https://www.jogadnes.cz/joga/vecerni-relaxacni-praxe-pro-lepsi-spanek-5520/</link>
+      <description>Krátká sekvence před spaním, která uklidní mysl a tělo.</description>
+      <pubDate>Sat, 18 Oct 2025 21:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/vecerni-relaxacni-praxe-pro-lepsi-spanek-5520/</guid>
+    </item>
+
+    <item>
+      <title>Posilování zad pomocí jednoduchých ásan</title>
+      <link>https://www.jogadnes.cz/joga/posilovani-zad-pomoci-asan-5510/</link>
+      <description>Cvičení vhodné pro lidi s bolestmi zad, s důrazem na techniku.</description>
+      <pubDate>Fri, 17 Oct 2025 09:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/posilovani-zad-pomoci-asan-5510/</guid>
+    </item>
+
+    <item>
+      <title>Krátká praxe na uvolnění ramen</title>
+      <link>https://www.jogadnes.cz/joga/kratka-praxe-na-uvolneni-ramen-5505/</link>
+      <description>3minutová série proti ztuhlým ramenům pro práci u počítače.</description>
+      <pubDate>Thu, 16 Oct 2025 14:30:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/kratka-praxe-na-uvolneni-ramen-5505/</guid>
+    </item>
+
+    <item>
+      <title>Jak dýchat během cvičení: praktické tipy</title>
+      <link>https://www.jogadnes.cz/joga/jak-dychat-behem-cviceni-5498/</link>
+      <description>Praktické pokyny pro správné dýchání během ásan a toku.</description>
+      <pubDate>Wed, 15 Oct 2025 11:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/jak-dychat-behem-cviceni-5498/</guid>
+    </item>
+
+    <item>
+      <title>Jóga pro začátečníky: první kroky</title>
+      <link>https://www.jogadnes.cz/joga/joga-pro-zacatecniky-prvni-kroky-5480/</link>
+      <description>Průvodce pro úplné začátečníky, co očekávat a jak začít bezpečně.</description>
+      <pubDate>Tue, 14 Oct 2025 07:45:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/joga-pro-zacatecniky-prvni-kroky-5480/</guid>
+    </item>
+
+    <item>
+      <title>Strečink pro lepší mobilitu kyčlí</title>
+      <link>https://www.jogadnes.cz/joga/strecing-pro-lepsi-mobilitu-kyc-5470/</link>
+      <description>Série pozic zaměřených na protažení a mobilitu kyčlí.</description>
+      <pubDate>Mon, 13 Oct 2025 16:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/strecing-pro-lepsi-mobilitu-kyc-5470/</guid>
+    </item>
+
+    <item>
+      <title>Mindfulness a jóga: spojení praxe a pozornosti</title>
+      <link>https://www.jogadnes.cz/joga/mindfulness-a-joga-spojeni-praxe-a-pozornosti-5460/</link>
+      <description>Jak kombinovat meditační techniky s fyzickou praxí jógy pro lepší výsledky.</description>
+      <pubDate>Sun, 12 Oct 2025 10:15:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.jogadnes.cz/joga/mindfulness-a-joga-spojeni-praxe-a-pozornosti-5460/</guid>
+    </item>
+
   </channel>
 </rss>
