@@ -3,22 +3,30 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from email.utils import format_datetime
+import re
 
 BASE_URL = "https://www.jogadnes.cz/clanky/"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; FeedCrawler/1.0)"}
 DAYS_BACK = 99
 
 def fetch_article_links():
-    r = requests.get(BASE_URL, headers=HEADERS, timeout=20)
-    r.raise_for_status()
-    soup = BeautifulSoup(r.text, "lxml")
-    articles = soup.select("div.article-box a[href^='/']")
-    links = ["https://www.jogadnes.cz" + a["href"] for a in articles if a.has_attr("href")]
-    return list(dict.fromkeys(links))
+    try:
+        r = requests.get(BASE_URL, headers=HEADERS, timeout=20)
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, "lxml")
+        articles = soup.select("div.article-box a[href^='/']")
+        links = ["https://www.jogadnes.cz" + a["href"] for a in articles if a.has_attr("href")]
+        return list(dict.fromkeys(links))
+    except Exception as e:
+        print(f"Error fetching article list: {e}")
+        return []
 
 def fetch_article_meta(url):
     try:
         r = requests.get(url, headers=HEADERS, timeout=20)
+        if r.status_code == 404:
+            print(f"Skipping 404: {url}")
+            return None
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "lxml")
         title = soup.find("meta", property="og:title") or soup.find("title")
@@ -37,20 +45,19 @@ def fetch_article_meta(url):
             "pubdate": normalize_pubdate(pubdate),
             "link": url
         }
-    except Exception:
+    except Exception as e:
+        print(f"Error fetching article: {url} → {e}")
         return None
 
 def normalize_pubdate(value):
     if not value:
         return None
-    try:
-        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except Exception:
+    for fmt in ("%Y-%m-%d", "%d. %m. %Y", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M:%S%z"):
         try:
-            dt = datetime.strptime(value, "%d. %m. %Y")
+            return datetime.strptime(value.strip(), fmt)
         except Exception:
-            return None
-    return dt
+            continue
+    return None
 
 def escape_xml(s):
     return (s.replace("&", "&amp;")
@@ -105,4 +112,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
