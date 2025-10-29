@@ -5,21 +5,14 @@ from datetime import datetime, timedelta
 from email.utils import format_datetime
 import re
 
-BASE_URL = "https://www.jogadnes.cz/clanky/"
+BASE_URL = "https://www.jogadnes.cz"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; FeedCrawler/1.0)"}
 DAYS_BACK = 99
 
-def fetch_article_links():
-    try:
-        r = requests.get(BASE_URL, headers=HEADERS, timeout=20)
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "lxml")
-        articles = soup.select("div.article-box a[href^='/']")
-        links = ["https://www.jogadnes.cz" + a["href"] for a in articles if a.has_attr("href")]
-        return list(dict.fromkeys(links))
-    except Exception as e:
-        print(f"Error fetching article list: {e}")
-        return []
+def read_urls_from_file(file_path):
+    with open(file_path, 'r') as file:
+        urls = [line.strip() for line in file if line.strip()]
+    return urls
 
 def fetch_article_meta(url):
     try:
@@ -30,7 +23,7 @@ def fetch_article_meta(url):
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "lxml")
         title = soup.find("meta", property="og:title") or soup.find("title")
-        desc = soup.find("meta", property="og:description") or soup.find("meta", attrs={"name":"description"})
+        desc = soup.find("meta", property="og:description") or soup.find("meta", attrs={"name": "description"})
         time_tag = soup.find("time")
         pubdate = None
         if time_tag and time_tag.has_attr("datetime"):
@@ -61,16 +54,16 @@ def normalize_pubdate(value):
 
 def escape_xml(s):
     return (s.replace("&", "&amp;")
-             .replace("<", "&lt;")
-             .replace(">", "&gt;")
-             .replace('"', "&quot;")
-             .replace("'", "&apos;"))
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace('"', "&quot;")
+            .replace("'", "&apos;"))
 
 def main():
-    links = fetch_article_links()
+    urls = read_urls_from_file("urls.txt")
     cutoff = datetime.utcnow() - timedelta(days=DAYS_BACK)
     items = []
-    for url in links:
+    for url in urls:
         meta = fetch_article_meta(url)
         if not meta or not meta["pubdate"]:
             continue
@@ -82,7 +75,6 @@ def main():
             "description": meta["description"],
             "pubDate": format_datetime(meta["pubdate"])
         })
-
     now = format_datetime(datetime.utcnow())
     parts = []
     parts.append('<?xml version="1.0" encoding="utf-8"?>')
@@ -93,7 +85,6 @@ def main():
     parts.append('    <description>Automaticky generovaný RSS feed z posledních 99 dní</description>')
     parts.append('    <language>cs</language>')
     parts.append(f'    <lastBuildDate>{now}</lastBuildDate>')
-
     for it in items:
         parts.append('    <item>')
         parts.append(f'      <title>{escape_xml(it["title"])}</title>')
@@ -102,10 +93,8 @@ def main():
         parts.append(f'      <pubDate>{it["pubDate"]}</pubDate>')
         parts.append(f'      <guid isPermaLink="true">{escape_xml(it["link"])}</guid>')
         parts.append('    </item>')
-
     parts.append('  </channel>')
     parts.append('</rss>')
-
     with open("jogadnes.xml", "w", encoding="utf-8") as out:
         out.write("\n".join(parts))
     print(f"Wrote jogadnes.xml with {len(items)} items")
