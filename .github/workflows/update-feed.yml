@@ -31,7 +31,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git status --porcelain | grep -q jogadnes.xml; then
             git add jogadnes.xml
-            git commit -m "Auto-update jogadnes.xml ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
+            git commit -m "Auto-update jogadnes.xml"
             git push
           else
             echo "No changes to jogadnes.xml"
